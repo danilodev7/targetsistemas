@@ -159,7 +159,6 @@ Se ainda não tiver o `http-server` instalado, você pode instalá-lo usando o n
 
 1. Instalar o http-server: Se ainda não tiver o http-server instalado, você pode instalá-lo usando o npm:
    
-```
 ``` npm install -g http-server
 ```
 
