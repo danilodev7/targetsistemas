@@ -17,7 +17,8 @@ Ao final do processamento, qual será o valor da variável SOMA?
 
 **Resposta:** 
 
-```javascript
+```
+javascript
 let INDICE = 13;
 let SOMA = 0;
 let K = 0;
@@ -39,7 +40,8 @@ Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor semp
 
 **Resposta:** 
 
-```function isFibonacci(num) {
+```
+function isFibonacci(num) {
     let a = 0;
     let b = 1;
     if (num === a || num === b) return true;
@@ -74,7 +76,8 @@ Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, fa
 
 **Resposta:** 
 
-```const faturamentoDiario = [/* insira os valores do JSON ou XML aqui */];
+```
+const faturamentoDiario = [/* insira os valores do JSON ou XML aqui */];
 
     function calcularFaturamento(faturamento) {
     const diasComFaturamento = faturamento.filter(valor => valor > 0);
@@ -112,7 +115,8 @@ Escreva um programa na linguagem que desejar onde calcule o percentual de repres
 
 **Resposta:** 
 
-```const faturamentoPorEstado = {
+```
+const faturamentoPorEstado = {
     SP: 67836.43,
     RJ: 36678.66,
     MG: 29229.88,
@@ -136,7 +140,8 @@ Escreva um programa que inverta os caracteres de um string.
 
 **Resposta:** 
 
-```function inverterString(str) {
+```
+function inverterString(str) {
     let invertida = '';
     for (let i = str.length - 1; i >= 0; i--) {
         invertida += str[i];
