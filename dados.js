@@ -44,8 +44,8 @@ function calculatePercentual(faturamento) {
 }
 
 // Caminhos dos arquivos
-const xmlFilePath = '/home/danilo/workdo/testes/Target Sistema/dados (2).xml';
-const jsonFilePath = '/home/danilo/workdo/testes/Target Sistema/dados.json';
+const xmlFilePath = './dados (2).xml';
+const jsonFilePath = './dados.json';
 
 // Leitura dos dados
 const xmlData = readXMLFile(xmlFilePath);
@@ -68,5 +68,6 @@ const faturamentoMensal = {
 };
 
 // Cálculo de percentual de representação
+
 const percentual = calculatePercentual(faturamentoMensal);
 console.log('Percentual de representação por estado:', percentual);

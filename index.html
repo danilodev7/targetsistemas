@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="./dados.js" defer></script>
+</head>
+<body>
+    <h1>Resultados do Faturamento</h1>
+    <div id="resultados"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultadosDiv = document.getElementById('resultados');
+
+            // Função para exibir resultados no HTML
+            function exibirResultados(titulo, dados) {
+                const section = document.createElement('section');
+                const h2 = document.createElement('h2');
+                h2.textContent = titulo;
+                section.appendChild(h2);
+
+                for (const key in dados) {
+                    const p = document.createElement('p');
+                    p.textContent = `${key}: ${dados[key]}`;
+                    section.appendChild(p);
+                }
+
+                resultadosDiv.appendChild(section);
+            }
+
+            // Função para calcular percentual de representação por estado
+            function calculatePercentual(faturamento) {
+                const total = Object.values(faturamento).reduce((acc, val) => acc + val, 0);
+                const percentual = {};
+                for (const estado in faturamento) {
+                    percentual[estado] = ((faturamento[estado] / total) * 100).toFixed(2) + '%';
+                }
+                return percentual;
+            }
+
+            // Função para ler dados do arquivo XML
+            async function readXMLFile(filePath) {
+                const response = await fetch(filePath);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "application/xml");
+                const rows = Array.from(xmlDoc.getElementsByTagName('row'));
+                return rows.map(row => ({
+                    dia: parseInt(row.getElementsByTagName('dia')[0].textContent),
+                    valor: parseFloat(row.getElementsByTagName('valor')[0].textContent)
+                }));
+            }
+
+            // Função para ler dados do arquivo JSON
+            async function readJSONFile(filePath) {
+                const response = await fetch(filePath);
+                return await response.json();
+            }
+
+            // Função para calcular menor, maior e média de faturamento
+            function calculateFaturamento(data) {
+                const valores = data.map(d => d.valor).filter(v => v > 0);
+                const menor = Math.min(...valores);
+                const maior = Math.max(...valores);
+                const media = valores.reduce((acc, val) => acc + val, 0) / valores.length;
+                const diasAcimaMedia = data.filter(d => d.valor > media).length;
+
+                return { menor, maior, media, diasAcimaMedia };
+            }
+
+            // Dados de faturamento mensal por estado
+            const faturamentoMensal = {
+                SP: 67836.43,
+                RJ: 36678.66,
+                MG: 29229.88,
+                ES: 27165.48,
+                Outros: 19849.53
+            };
+
+            // Cálculo de percentual de representação
+            const percentual = calculatePercentual(faturamentoMensal);
+            exibirResultados('Percentual de representação por estado', percentual);
+
+            // Leitura dos dados e cálculo de faturamento
+            Promise.all([
+                readXMLFile('./dados%20(2).xml'),
+                readJSONFile('./dados.json')
+            ]).then(([xmlData, jsonData]) => {
+                const faturamentoXML = calculateFaturamento(xmlData);
+                const faturamentoJSON = calculateFaturamento(jsonData);
+
+                exibirResultados('Faturamento XML', faturamentoXML);
+                exibirResultados('Faturamento JSON', faturamentoJSON);
+
+                // Exibir resultados solicitados para dados.json
+                const resultadosSolicitados = {
+                    "Menor valor de faturamento": faturamentoJSON.menor,
+                    "Maior valor de faturamento": faturamentoJSON.maior,
+                    "Dias com faturamento acima da média": faturamentoJSON.diasAcimaMedia
+                };
+                exibirResultados('Resultados Solicitados (dados.json)', resultadosSolicitados);
+            }).catch(error => console.error('Erro ao ler os arquivos:', error));
+        });
+    </script>
+</body>
+</html>
