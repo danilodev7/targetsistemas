@@ -7,7 +7,8 @@ Este repositório contém as soluções para os testes técnicos propostos.
 **Pergunta:** 
 Observe o trecho de código abaixo: 
 
-```int INDICE = 13, SOMA = 0, K = 0;
+```javascript
+int INDICE = 13, SOMA = 0, K = 0;
 Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
 Imprimir(SOMA);
 ```
@@ -17,7 +18,7 @@ Ao final do processamento, qual será o valor da variável SOMA?
 
 **Resposta:** 
 
-```
+```javascript
 javascript
 let INDICE = 13;
 let SOMA = 0;
@@ -40,7 +41,7 @@ Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor semp
 
 **Resposta:** 
 
-```
+```javascript
 function isFibonacci(num) {
     let a = 0;
     let b = 1;
@@ -76,7 +77,7 @@ Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, fa
 
 **Resposta:** 
 
-```
+```javascript
 const faturamentoDiario = [/* insira os valores do JSON ou XML aqui */];
 
     function calcularFaturamento(faturamento) {
@@ -115,7 +116,7 @@ Escreva um programa na linguagem que desejar onde calcule o percentual de repres
 
 **Resposta:** 
 
-```
+```javascript
 const faturamentoPorEstado = {
     SP: 67836.43,
     RJ: 36678.66,
@@ -140,7 +141,7 @@ Escreva um programa que inverta os caracteres de um string.
 
 **Resposta:** 
 
-```
+```javascript
 function inverterString(str) {
     let invertida = '';
     for (let i = str.length - 1; i >= 0; i--) {
