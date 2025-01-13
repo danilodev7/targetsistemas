@@ -159,17 +159,20 @@ Se ainda não tiver o `http-server` instalado, você pode instalá-lo usando o n
 
 1. Instalar o http-server: Se ainda não tiver o http-server instalado, você pode instalá-lo usando o npm:
    
-``` npm install -g http-server
+``` 
+npm install -g http-server
 ```
 
 2. Iniciar o servidor HTTP: Navegue até o diretório onde estão seus arquivos e inicie o servidor:
 
-``` Sistema
+``` 
+Sistema
 http-server
 ```
 
 3. Acessar os arquivos via HTTP: O http-server por padrão serve os arquivos na porta 8080. Então, você pode acessar seus arquivos no navegador através do endereço:
 
 
-``` http://localhost:8080
+```
+http://localhost:8080
 ```
