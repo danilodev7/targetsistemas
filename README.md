@@ -148,3 +148,28 @@ const stringOriginal = "exemplo"; // Altere esta string para testar outras
 console.log(`String original: ${stringOriginal}`);
 console.log(`String invertida: ${inverterString(stringOriginal)}`);
 ```
+
+## 🚀 Como Executar o Programa
+
+Para executar o programa e visualizar os resultados no navegador, siga os passos abaixo:
+
+### Instalar o `http-server`
+
+Se ainda não tiver o `http-server` instalado, você pode instalá-lo usando o npm:
+
+1. Instalar o http-server: Se ainda não tiver o http-server instalado, você pode instalá-lo usando o npm:
+   
+
+```npm install -g http-server
+```
+
+2. Iniciar o servidor HTTP: Navegue até o diretório onde estão seus arquivos e inicie o servidor:
+
+``` Sistema
+http-server
+```
+
+3. Acessar os arquivos via HTTP: O http-server por padrão serve os arquivos na porta 8080. Então, você pode acessar seus arquivos no navegador através do endereço:
+
+``` http://localhost:8080
+```
